@@ -21,7 +21,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/83554952?s=400&u=ee7746be905bd96586a21e0797e97cb0ca2a0709&v=4" width="100px;" alt=""/>
  <br />
- <sub><b>Luca Lana</b></sub></a><a href="">💻</a>
+ <sub><b>Luca Lana</b></sub>💻
 
 
 Feito com ❤️ por Luca Lana 👋🏽 Entre em contato!
