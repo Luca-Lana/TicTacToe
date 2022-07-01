@@ -32,8 +32,8 @@
                 <input type="hidden" class="simboloDaVez" value="">
             </div>
         </div>
-        <div style="margin-top: 30px;">
-            <button class="resetar" style="height: 50px; width:100px;">RESETAR</button>
+        <div>
+            <button class="reset">RESETAR</button>
         </div>
     </div>
 </body>

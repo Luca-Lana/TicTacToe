@@ -23,6 +23,11 @@ body {
     align-items: center;
 }
 
+.reset {
+    height: 50px; 
+    width:100px;
+    margin-top: 30px;
+}
 .espaco {
     background-color: black;
     color: whitesmoke;
@@ -38,7 +43,7 @@ body {
 
 .mensagemGanhador {
     color: greenyellow;
-    font-size: 100px;
+    font-size: 50px;
 }
 
 #tabuleiro {

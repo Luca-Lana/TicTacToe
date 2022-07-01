@@ -1,4 +1,4 @@
-$('.resetar').click(function() {
+$('.reset').click(function() {
     $('.simbolo').removeAttr('disabled');
     $('.simboloDaVez').val('');
     $('.espaco').each(function() {
@@ -15,87 +15,33 @@ $('.simbolo').click(function() {
 })
 
 $('.espaco').click(function() {
-
     if($('.mensagemGanhador').text() != ''){
         return
     }   
 
     if($('.simboloDaVez').val() != '' && $(this).text() == ''){
         let simbolo = $('.simboloDaVez').val();
-        if(simbolo == 'X'){
-            $('.simboloDaVez').val('O');
-        }else{
-            $('.simboloDaVez').val('X');
-        }
+        simbolo == 'X' ? $('.simboloDaVez').val('O') : $('.simboloDaVez').val('X');
         $(this).text(simbolo);
-
-        if(checarVitoria()){
-            $('.mensagemGanhador').text('PARABENS VOCE GANHOU!')
-        }
-
-       
+        checarVitoria()       
     }
 })
 
 function checarVitoria() {
-    //HORIZONTAL
-    if($('#espaco1').text() != '' && $('#espaco1').text() == $('#espaco2').text() && $('#espaco1').text() == $('#espaco3').text()){
-        $('#espaco1').css('border','3px solid greenyellow');
-        $('#espaco2').css('border','3px solid greenyellow');
-        $('#espaco3').css('border','3px solid greenyellow');
-        return true;
-    }
+    let condicoesVitoria = [
+        [1,2,3], [4,5,6], [7,8,9],
+        [1,4,7], [2,5,8], [3,6,9],
+        [1,5,9], [3,5,7]
+    ];
 
-    if($('#espaco4').text() != '' && $('#espaco4').text() == $('#espaco5').text() && $('#espaco4').text() == $('#espaco6').text()){
-        $('#espaco4').css('border','3px solid greenyellow');
-        $('#espaco5').css('border','3px solid greenyellow');
-        $('#espaco6').css('border','3px solid greenyellow');
-        return true;
-    }
+    condicoesVitoria.forEach(function(condicao) {
+        let campo1            = $(`#espaco${condicao[0]}`).text();
 
-    if($('#espaco7').text() != '' && $('#espaco7').text() == $('#espaco8').text() && $('#espaco7').text() == $('#espaco9').text()){
-        $('#espaco7').css('border','3px solid greenyellow');
-        $('#espaco8').css('border','3px solid greenyellow');
-        $('#espaco9').css('border','3px solid greenyellow');
-        return true;
-    }
-
-    //HORIZONTAL
-    if($('#espaco1').text() != '' && $('#espaco1').text() == $('#espaco4').text() && $('#espaco1').text() == $('#espaco7').text()){
-        $('#espaco1').css('border','3px solid greenyellow');
-        $('#espaco4').css('border','3px solid greenyellow');
-        $('#espaco7').css('border','3px solid greenyellow');
-        return true;
-    }
-
-    if($('#espaco2').text() != '' && $('#espaco2').text() == $('#espaco5').text() && $('#espaco2').text() == $('#espaco8').text()){
-        $('#espaco2').css('border','3px solid greenyellow');
-        $('#espaco5').css('border','3px solid greenyellow');
-        $('#espaco8').css('border','3px solid greenyellow');
-        return true;
-    }
-
-    if($('#espaco3').text() != '' && $('#espaco3').text() == $('#espaco6').text() && $('#espaco3').text() == $('#espaco9').text()){
-        $('#espaco3').css('border','3px solid greenyellow');
-        $('#espaco6').css('border','3px solid greenyellow');
-        $('#espaco9').css('border','3px solid greenyellow');
-        return true;
-    }
-
-    //diagonal
-    if($('#espaco1').text() != '' && $('#espaco1').text() == $('#espaco5').text() && $('#espaco1').text() == $('#espaco9').text()){
-        $('#espaco1').css('border','3px solid greenyellow');
-        $('#espaco5').css('border','3px solid greenyellow');
-        $('#espaco9').css('border','3px solid greenyellow');
-        return true;
-    }
-
-    if($('#espaco3').text() != '' && $('#espaco3').text() == $('#espaco5').text() && $('#espaco3').text() == $('#espaco7').text()){
-        $('#espaco3').css('border','3px solid greenyellow');
-        $('#espaco5').css('border','3px solid greenyellow');
-        $('#espaco7').css('border','3px solid greenyellow');
-        return true;
-    }
+        if(campo1 != '' && $(`#espaco${condicao[1]}`).text() == campo1 && $(`#espaco${condicao[2]}`).text() == campo1){
+            $(`#espaco${condicao[0]}`).css('border','3px solid greenyellow');
+            $(`#espaco${condicao[1]}`).css('border','3px solid greenyellow');
+            $(`#espaco${condicao[2]}`).css('border','3px solid greenyellow');
+            $('.mensagemGanhador').text(`O JOGADOR "${campo1}" GANHOU!!`);
+        }
+    });
 }
-
-
